@@ -1,0 +1,32 @@
+# Scene description.
+# Lights are position (4), color (4) 
+# Materials are defined for each object
+# Scene File for Demo program 
+
+# Set the scene size and camera location 
+size 500 500
+camera 0 -2 2 0 0 0 0 1 1 30.0
+
+# lights.  A single point and directional light
+# Note that your program must support up to 10 lights
+light 0.6 0 0.1 0 1 0.5 0 1  
+light 0 -0.6 0.1 1 0.5 0.5 1 1 
+
+# I do a global transform to move this down a little 
+# A good use of matrix stacks and hierarchy 
+pushTransform 
+translate 0 0 -0.2 
+
+
+# Floor (white but now with shading)
+# Materials first.  We don't change specular and shininess
+  ambient 0 0 0 1
+  diffuse 1 1 1 1
+  pushTransform
+        scale 1.0 1.0 0.025  
+        cube 1.0 
+  popTransform
+
+# Undo global transform
+popTransform
+
